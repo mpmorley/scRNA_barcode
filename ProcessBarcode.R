@@ -6,14 +6,15 @@ library(readr)
 library(optparse)
 
 #############################################################################
-#
+# This code was modify from a series scripts written by Yogesh Goyal with Shweta Ramdas. Michale Morley moerged teh code 
+# into a single and added the ability to run via cmd line parameters. 
 #
 #################################################################################
 
 
 
 ###########################################################
-# 
+# Edit for Starcode params
 ###############################################################
 samplerRun<- list()
 samplerRun[['sub50_d8']] <- list(subSampleSize=50, d=8)
@@ -24,7 +25,7 @@ samplerRun[['sub30_d6']] <- list(subSampleSize=30, d=6)
 
 subSampleSize <- 4000
   
-
+########################################################################################
 option_list = list(
   make_option(c("-s", "--shavedReads"), default=NULL, 
               help="ShavedReadsFile file name"),
@@ -62,8 +63,6 @@ MakeLVPlot <- function(m){
     theme_classic()
   
 }
-
-
 
 
 ###########################################################################
