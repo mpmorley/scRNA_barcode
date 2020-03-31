@@ -1,4 +1,19 @@
-# scRNA_barcode
+# scRNA Barcode #
+## Overview ##
+Set of utilities for the analysis of viral barcoded single cell experiments.
+## Authors ##
+* Yogesh Goyal
+* Shweta Ramdas 
+* Michael Morley
+
+
+## Requirments ##
+You'll need to have the starcode binary in your sytem path.
+
+https://github.com/gui11aume/starcode
+
+## Step One: Proccess Reads ##
+
 ```bash
 usage: ProccessReads.py [-h] -1 READ1 -2 READ2 -s STAGGERLENGTH
                         [-g GFPPRIMERLENGTH] [-o OUTPUT]
@@ -19,13 +34,13 @@ optional arguments:
 python ProccessReads.py -1 AATCCAGC_1.fastq.gz -2 AATCCAGC_2.fastq.gz -s 4 -o Sample1
 
 ```
-
+## Step Two: Process Barcodes ##
 The next step is run using the R script ProcessBarcode.R
 
-You'll need to have the starcode binary in your sytem path. 
 
-This fiorst thing to do is configure the parameter sweep you will run with starcode. 
-This done by modifing the samplerRun listat hte top of the file. 
+
+This first thing to do is configure the parameter sweep you will run with starcode. 
+This done by modifing the samplerRun list at the top of the file. 
 ```bash
 
 samplerRun<- list()
@@ -36,9 +51,9 @@ samplerRun[['sub30_d6']] <- list(subSampleSize=30, d=6)
 ```
 Then run the script. The Whitelist.tsv file is the Whitelist cell barcodes, make sure it matches the chemistry version that was used for the run. 
 ```bash
-Rscript --vanilla ProcessBarcode.R -s Sample1/uniqueShavedReads.txt -w Whitelist.tsv -o Sample
+ Rscript --vanilla ProcessBarcode.R -s Sample1/uniqueShavedReads.txt -w Whitelist.tsv -o Sample
+````
 
-```
 
 
 
